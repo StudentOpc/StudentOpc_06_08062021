@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
 // const Thing = require('../models/Thing')
-const stuffCtrl = require('../controllers/stuffCtrl')
+const stuffCtrl = require('../controllers/stuffCtrl');
 const auth = require('../middleware/auth');
+const multer =  require('../middleware/multer-config');
 
-router.post('/', auth, stuffCtrl.createThing); // Crée un objet 
+router.post('/', auth, multer, stuffCtrl.createThing); // Crée un objet 
 
-router.put('/:id', auth, stuffCtrl.modifyThing); // Met à jour le produit ( (/:id) page crée dynamiquement )
+router.put('/:id', auth, multer, stuffCtrl.modifyThing); // Met à jour le produit ( (/:id) page crée dynamiquement )
 
 router.delete('/:id', auth, stuffCtrl.deleteThing); // Supprime le produit ( (/:id) page crée dynamiquement )
 
